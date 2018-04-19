@@ -1,0 +1,41 @@
+{
+  "name": "angular-realtime-chat",
+  "version": "0.0.9",
+  "description": "angular realtime chat module",
+  "main": "index.js",
+  "scripts": {
+    "transpile": "ngc",
+    "package": "rollup -c",
+    "minify": "uglifyjs dist/bundles/chat.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/chat.umd.min.js",
+    "build": "npm run transpile && npm run package && npm run minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shunnmugam/angular-realtime-chat.git"
+  },
+  "keywords": [
+    "angular",
+    "realtime",
+    "chat",
+    "module",
+    "chat",
+    "angular"
+  ],
+  "author": "shanramesh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shunnmugam/angular-realtime-chat/issues"
+  },
+  "homepage": "https://github.com/shunnmugam/angular-realtime-chat#readme",
+  "devDependencies": {
+    "@angular/common": "^5.2.10",
+    "@angular/compiler": "^5.2.10",
+    "@angular/compiler-cli": "^5.2.10",
+    "@angular/core": "^5.2.10",
+    "@angular/forms": "^5.2.10",
+    "rollup": "^0.58.1",
+    "rxjs": "^5.5.10",
+    "typescript": "^2.8.1",
+    "uglify-js": "^3.3.21"
+  }
+}

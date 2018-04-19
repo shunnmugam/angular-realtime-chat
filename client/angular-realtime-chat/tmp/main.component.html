@@ -1,4 +1,4 @@
-<div id="my-chat" class="my-chat">
+<div id="my-chat" class="my-chat" *ngIf="peoples!=undefined">
 	<div id="ng-chat">
       <div id="ng-chat-people" [ngClass]="{'ng-chat-people-collapsed': is_collapse}" >
           <a  class="ng-chat-title shadowed" href="javascript:void(0);" (click)="collapseIt('is_collapse')">

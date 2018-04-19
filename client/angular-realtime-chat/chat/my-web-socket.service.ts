@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class MyWebSocketService {
 
 private websocket;
+private state:number = 0;
+public friends_list:Array<number>;
+public my_id : number;
 
   // Observable string sources
   private componentMethodCallSource = new Subject<any>();
@@ -32,6 +36,17 @@ private websocket;
 
   onOpen(e)
   {
+    this.state = 1;
+
+    if(this.friends_list.length>0){
+
+      this.doSend(
+        JSON.stringify({'type':'find_friends_status',
+            'friends' : this.friends_list,
+            'my_id' : this.my_id
+          })
+        );
+    }
 
   }
 
@@ -51,8 +66,10 @@ private websocket;
 
 
   doSend(message) {
-    console.log('dosend'+message);
-    this.websocket.send(message);
+    
+      console.log('dosend'+message);
+      this.websocket.send(message);
+    
 
   }
 

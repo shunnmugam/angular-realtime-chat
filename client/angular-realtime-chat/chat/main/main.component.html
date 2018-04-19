@@ -1,0 +1,53 @@
+<div id="my-chat" class="my-chat" *ngIf="peoples!=undefined">
+	<div id="ng-chat">
+      <div id="ng-chat-people" [ngClass]="{'ng-chat-people-collapsed': is_collapse}" >
+          <a  class="ng-chat-title shadowed" href="javascript:void(0);" (click)="collapseIt('is_collapse')">
+              <span >
+                  Friends
+              </span>
+          </a>
+          <input  id="ng-chat-search_friend" type="search" placeholder="Search" class="ng-untouched ng-pristine ng-valid" [(ngModel)]="search_people">
+          <!----><ul  id="ng-chat-users">
+              <!----><li *ngFor="let people of peoples | searchPipe:'name':search_people;let i=index" (click)="peopleOnclick(i)">
+                  <!---->
+                  <!----><img  alt="" class="avatar" height="30" width="30" [src]="people.image">
+                  <strong  [title]="people.name">{{people.name}}
+                    <span class="un-read-message" *ngIf="people.unread_message_count!=undefined">
+                      {{ people.unread_message_count }}
+                    </span>
+                  </strong>
+                  <span  class="ng-chat-user-status {{people.status}}" title="{{people.name}}"></span>
+              </li>
+          </ul>
+      </div>
+      <!---->
+
+      <div [ngClass]="{'ng-chat-people-collapsed': is_collapse2 , 'ng-chat-window' : true}"  style="right: 282px;" *ngIf="selected_people!=undefined" >
+          <div  class="ng-chat-title" (click)="collapseIt('is_collapse2')">
+              <strong  title="Arya Stark">
+                  {{selected_people.name}}
+              </strong>
+              <span  class="ng-chat-user-status {{selected_people.status}}" [title]="selected_people.status"></span>
+              <!---->
+              <a  class="ng-chat-close" href="javascript:void(0);" (click)="closeChat()">X</a>
+          </div>
+          <div  class="ng-chat-messages">
+              <!---->
+              <div *ngFor="let chat_message of selected_people.messages">
+                <div class="ng-chat-message" *ngIf="chat_message.type=='sent' ">
+                    <span >{{chat_message.msg}}</span>
+                </div>
+                <div  class="ng-chat-message ng-chat-message-received" *ngIf="chat_message.type=='received'">
+                    <img  alt="" class="avatar" height="30" width="30" [src]="selected_people.image">
+                    <span >{{chat_message.msg}}</span>
+                </div>
+              </div>
+          </div>
+          <form (ngSubmit)="sendMessage()">
+            <input #message_box  type="text" placeholder="Type a message" name="message" [(ngModel)]="message" class=""> 
+          </form>
+          
+      </div>
+
+  </div>
+</div>

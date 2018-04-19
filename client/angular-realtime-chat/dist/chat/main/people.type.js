@@ -1,0 +1,1 @@
+//# sourceMappingURL=people.type.js.map

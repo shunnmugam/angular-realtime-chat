@@ -1,0 +1,1 @@
+{"version":3,"file":"people.type.js","sourceRoot":"","sources":["../../../chat/main/people.type.ts"],"names":[],"mappings":"","sourcesContent":["export interface People\n{\n\tname : string;\n\tid : number;\n\tresource_id : number;\n\timage : string;\n\tstatus : string;\n\tmessages ? : Array<any>;\n\tunread_message_count ? : number;\n}"]}
